@@ -1,16 +1,13 @@
-import { View, Text } from 'react-native';
 import React, { useContext, useEffect } from 'react';
-import Connexion from './Public/Connexion';
-import Private from './Private';
 import { useDispatch, useSelector } from 'react-redux';
-import Public from './Public';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Screen/Home';
 import Settings from './Screen/Settings' ;
 import { FirebaseContext } from '../../firebaseContext' ;
 import { addArticle, addCategorie } from '../../redux/action';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailsArticle from './Screen/DetailsArticle';
+import Details from './Screen/Details';
+import Panier from './Screen/Panier';
 
 // Bottom Tabs création de fct° au lieu de constantes
 const Tab = createBottomTabNavigator();
@@ -22,7 +19,7 @@ const Acceuil = () => {
   return (
     <Stack.Navigator >
       <Stack.Screen options={{ headerShown: false }} name='Home' component={ Home } />
-      <Stack.Screen options={{ headerShown: false }} name='DetailsArticle' component={ DetailsArticle} />
+      <Stack.Screen options={{ headerShown: false }} name='DetailsArticle' component={ Details } />
     </Stack.Navigator>
   )
 }
@@ -110,8 +107,9 @@ const Acceuil = () => {
   
   return (
 
-    <Tab.Navigator screenOptions={{headerShown: false}} >
+    <Tab.Navigator screenOptions={{headerShown: true}} >
       <Tab.Screen name="Acceuil" component={Acceuil} />
+      <Tab.Screen name="Panier" component={Panier} />
       <Tab.Screen name="Mon Compte" component={Settings} />
     </Tab.Navigator>
 

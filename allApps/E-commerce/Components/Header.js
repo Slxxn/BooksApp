@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/Feather'
 import Icon2 from 'react-native-vector-icons/Entypo'
@@ -17,9 +17,12 @@ const Header = () => {
   return (
 
     <View style={styles.header}>
-
-      <Icon2 name='back' size={25} color='black' 
-      onPress={ Retour }/>
+      
+      <TouchableOpacity style={styles.icon} onPress={ Retour }>
+        <Icon2 name='back' size={35} color='black'/>
+      </TouchableOpacity>
+      
+     
 
       {/* METTRE source = { { uri : } } et require quand l'image est stocké localement */}
       <Image
@@ -54,5 +57,12 @@ const styles = StyleSheet.create({
         height:'100%',
         aspectRatio: 4.5,
     },
+
+    icon:{
+      height:55, 
+      width:60,
+      justifyContent:'center', 
+      alignItems:'center'
+    }
 
 })

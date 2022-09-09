@@ -2,6 +2,10 @@ import { EDIT_LOGIN } from "./type";
 import { EDIT_NOMBRE } from "./type";
 import { ADD_CATEGORIE } from "./type";
 import { ADD_ARTICLE } from "./type";
+import { ADD_PANIER } from "./type";
+import { REMOVE_PANIER } from "./type";
+import { REMOVE_ONE_PANIER } from "./type";
+
 
 export const editLogin = (login) => ( {
 
@@ -28,5 +32,26 @@ export const addArticle = (article) => ( {
 
     type : ADD_ARTICLE ,
     payload : article ,
+
+} )
+
+export const addPanier = (panier) => ( {
+
+    type : ADD_PANIER ,
+    payload : panier ,
+
+} )
+
+export const removePanier = () => ( {
+
+    type : REMOVE_PANIER ,
+    payload : [] ,
+
+} )
+
+export const removeOnePanier = (panier) => ( {
+
+    type : REMOVE_ONE_PANIER ,
+    payload : panier ,
 
 } )

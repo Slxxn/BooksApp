@@ -10,18 +10,12 @@ export const styled = StyleSheet.create({
     },
 
     top:{
-        flex:1,
+        backgroundColor:'green',
+        height:250,
     },
     
-    viewimagegch:{
-        height:255,
-        width:255,
-    },
-    
-    hautimagegch:{
-        height:95,
-        width:200,
-        // backgroundColor:'red',
+    button:{
+        margin:10,
     },
     
     bottom:{

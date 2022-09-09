@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import First from './allApps/First';
+import Index from './allApps/First/Index'
 import NewsScreen from './allApps/AppNews';
 import Insta from './allApps/Insta';
 import ActionVerite from './allApps/ActionVerite';
@@ -25,7 +25,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
 
 
-  auth()
+  /* auth() 
   .signInAnonymously()
   .then(() => {
     console.log('User signed in anonymously');
@@ -36,7 +36,7 @@ const App = () => {
     }
 
     console.error(error);
-  });
+  });*/
 
 
   return (
@@ -54,7 +54,7 @@ const App = () => {
           >
 
 
-          <Stack.Screen name="First" component={First} />
+          <Stack.Screen name="First" component={Index} />
 
           {/* News app Screen */}
           <Stack.Screen name="NewsScreen" component={NewsScreen} />
