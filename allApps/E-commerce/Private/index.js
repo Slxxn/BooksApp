@@ -1,45 +1,30 @@
-import { Text, View, Button } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
-import { styles } from '../../First/theme/style'
 import { useDispatch } from 'react-redux'
-import { editLogin } from '../../../redux/action'
-import { editNombre } from '../../../redux/action';
-import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native'
+import { editUser } from '../../../redux/action'
 
-const Private = () => {
+const Index = () => {
 
-  
-   // Récupérer la variable nombre qui est dans le state
-   const { nombre } = useSelector( state => state ) ;
+  const dispatch = useDispatch() ;
+
+  const navigation = useNavigation() ;
     
-   const dispatch = useDispatch() ;
-  
-   const pressDeconnexion = () => {
-    dispatch( editLogin( false ) ) ;
-    dispatch(editNombre( nombre - nombre )) ;
-    console.log("Déconnexion") ;
+  const pressDéconnexion = () => {
+    // Changer valeur State
+    dispatch( editUser( false ) ) ;
+    navigation.navigate( 'Public' ) ;
    } ;
-  
-    const ajouter = () => {
-        dispatch(editNombre( nombre + 1 )) ;
-    } ;
-   
-   const voir = () => {
-        ;
-    } ;
 
   return (
 
     <View>
-
-      <Text> Vous êtes connecté </Text>
-      <Text> Nombre : { nombre } </Text>
-      <Button onPress={ pressDeconnexion } title='Déconnexion' />
-      <Button onPress={ ajouter } title='Ajouter' />
-      <Button onPress={ voir } title='Voir' />
-
+      
+      <Button onPress={ pressDéconnexion } title='Déconnexion' />
+    
     </View>
+
   )
 }
 
-export default Private
+export default Index

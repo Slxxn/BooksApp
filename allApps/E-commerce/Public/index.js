@@ -1,24 +1,27 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux';
+
+//Création de la navigation des pages
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+//Importation des pages 'public'.
+import Connexion from './Connexion'
+import Inscription from './Inscription'
+
+//Création de la navigation des pages
+const Tab = createNativeStackNavigator()
 
 const Public = () => {
-  
-  // Récupérer la variable nombre qui est dans le state
-  const { nombre } = useSelector( state => state ) ;
-
-  console.log(nombre)
-
   return (
 
-    <View>
+    //Création de la navigation des pages
+   <Tab.Navigator screenOptions={{headerShown:true}} >
 
-      <Text> Connectez-vous </Text>
-
-    </View>
-
+        <Tab.Screen name = 'Connexion' component = {Connexion} />
+        <Tab.Screen name = 'Inscription' component = {Inscription}/>
+        
+   </Tab.Navigator>
   )
-
 }
 
 export default Public

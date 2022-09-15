@@ -5,7 +5,7 @@ import { ADD_ARTICLE } from "./type";
 import { ADD_PANIER } from "./type";
 import { REMOVE_PANIER } from "./type";
 import { REMOVE_ONE_PANIER } from "./type";
-
+import { EDIT_USER } from "./type";
 
 export const editLogin = (login) => ( {
 
@@ -53,5 +53,12 @@ export const removeOnePanier = (panier) => ( {
 
     type : REMOVE_ONE_PANIER ,
     payload : panier ,
+
+} )
+
+export const editUser = (user) => ( {
+
+    type : EDIT_USER ,
+    payload : user ,
 
 } )

@@ -1,27 +1,32 @@
-import { View, Text, Button } from 'react-native' ;
-import React from 'react' ;
-import { useDispatch } from 'react-redux';
-import { editLogin } from '../../../redux/action' ;
+import { StyleSheet, Text, View, onPress } from 'react-native'
+import React from 'react'
+import { Button } from "@rneui/themed";
+import { editUser } from '../../../redux/action';
+//configuration de la navigation 
+import { useNavigation } from '@react-navigation/native'
 
 const Connexion = () => {
 
-  const dispatch = useDispatch() ;
-  
-  const pressConnexion = () => {
-    // Changer valeur State
-    dispatch( editLogin( true ) ) ;
-    console.log("connexion") ;
-   } ;
+  const navigation = useNavigation()
+
+  //Création de la navigation vers "Inscription"
+  const onPressInscription = () =>{
+    navigation.navigate('Inscription')
+  }
 
   return (
-
     <View>
 
-      <Text>Connectez-vous</Text>
-      <Button onPress={ pressConnexion } title='Connexion' />
+      <Button 
+          title="Connexion" 
+          type="clear"
+         />
+      <Button 
+          title="Incrivez vous" 
+          type="clear"
+          onPress={onPressInscription} />
 
     </View>
-
   )
 }
 

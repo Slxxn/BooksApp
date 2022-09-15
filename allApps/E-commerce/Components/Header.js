@@ -26,7 +26,7 @@ const Header = () => {
 
       {/* METTRE source = { { uri : } } et require quand l'image est stocké localement */}
       <Image
-      style={styles.itemimage}
+      style={styles.itemImage}
       transition={true}
       transitionDuration={5000}
       source={ require('../../youtube/images/logo.jpg') }
@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
         justifyContent:"space-between",
         alignItems:'center',
         paddingHorizontal:15,
-        marginVertical:15,
+        marginTop:15,
     },
 
-    itemimage:{
+    itemImage:{
         flex:1,
         height:'100%',
         aspectRatio: 4.5,

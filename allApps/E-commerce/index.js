@@ -4,10 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Screen/Home';
 import Settings from './Screen/Settings' ;
 import { FirebaseContext } from '../../firebaseContext' ;
-import { addArticle, addCategorie } from '../../redux/action';
+import { addArticle, addCategorie, editUser } from '../../redux/action';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Details from './Screen/Details';
 import Panier from './Screen/Panier';
+import auth from '@react-native-firebase/auth';
 
 // Bottom Tabs création de fct° au lieu de constantes
 const Tab = createBottomTabNavigator();
@@ -95,6 +96,10 @@ const Acceuil = () => {
   
 
 
+  const authStateChanged = (user) => {
+    console.log('onAuthStateChanged', user)
+    dispatch(editUser(user))
+  }
 
 
   useEffect( () => {
@@ -102,15 +107,18 @@ const Acceuil = () => {
     initCategories() ;
     initArticles() ;
 
+    const subscriber = auth().onAuthStateChanged(authStateChanged);
+    return subscriber; // unsubscribe on unmount
+
   }, [])
 
   
   return (
 
-    <Tab.Navigator screenOptions={{headerShown: true}} >
+    <Tab.Navigator screenOptions={{headerShown: true}}>
       <Tab.Screen name="Acceuil" component={Acceuil} />
       <Tab.Screen name="Panier" component={Panier} />
-      <Tab.Screen name="Mon Compte" component={Settings} />
+      <Tab.Screen name="Mon Compte" component={Settings} options={{headerShown: false}} />
     </Tab.Navigator>
 
   )

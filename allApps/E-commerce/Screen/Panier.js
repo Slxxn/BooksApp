@@ -1,7 +1,7 @@
 import { View, Text, FlatList} from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { stylep } from '../theme/stylePanier'
+import { styles } from '../theme/styles'
 import { useDispatch } from 'react-redux'
 import { removePanier,removeOnePanier } from '../../../redux/action'
 import { Button } from '@rneui/themed'
@@ -17,13 +17,15 @@ const PanierItem = ({item}) =>{
   }
 
   return (
-    <View style={stylep.contentPanier}>
-      <Text style={stylep.nom}>{item.nom}</Text>
-      <Text style={stylep.prix}>{item.prix}€</Text>
+    <View style={styles.contentPanier}>
+      <Text style={styles.nom}>{item.nom}</Text>
+      <View></View>
+      <Text style={styles.prix}>{item.prix}€</Text>
       <Button
-        style={stylep.button}
+        containerStyle={styles.button}
         title='delete'
         onPress={removeOne}
+        color='red'
         />
     </View>
   )
@@ -43,14 +45,14 @@ const Panier = () => {
   return (
     <View>
       <FlatList
-        style={stylep.flatlist}
+        style={styles.flatlist}
         data={dataPanier}
         renderItem={ ({item}) => <PanierItem item={item}/>}
         keyExtractor={item=>item.id}
       />
       <Button
-        style={stylep.button}
-        title='Vider le panier'
+        containerStyle={styles.buttonVider}
+        title='Vider tout le panier'
         onPress={remove}/>
     </View>
   )

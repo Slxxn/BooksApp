@@ -1,11 +1,11 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text} from 'react-native'
 import React from 'react'
-import { styled } from '../theme/styleDetails';
+import { styles } from '../theme/styles';
 import Header from './Header';
 import { Image } from '@rneui/base';
+import { Button } from '@rneui/themed'
 import { useDispatch } from 'react-redux';
 import {addPanier} from '../../../redux/action'
-import { Icon } from 'react-native-vector-icons/Icon';
 
 const ArticleDetail = ({articles}) => {
 
@@ -16,23 +16,38 @@ const ArticleDetail = ({articles}) => {
   }
 
   return (
-  
-      <View style={styled.details}>
-          
-        {/* <Image style={styled.hautimagegch} source={ { uri : articles.image } } />  */}
-        <Header/>
 
-        <Button
-          style={styled.button}
-          title='Ajouter au panier'
-          onPress={ajouter}
-          />
+    <View style={{ flex:1}}>
+        
+      
+      <Header/>
 
-        <View>
-            <Text> {articles.nom} </Text>
+      <Text style={styles.detailTitle}>{articles.nom}</Text>
+
+      <View  style={styles.imageView}>
+        
+        <View style={styles.primaryImageView}>
+           <Image style={styles.primaryImage} source={{ uri : articles.image }}/>
+        </View>
+      
+
+        <View style={styles.secondaryImageView}>
+          <Image style={styles.secondaryImage} source={{ uri : articles.image }}/>
+          <Image style={styles.secondaryImage} source={{ uri : articles.image }}/>
+          <Image style={styles.secondaryImage} source={{ uri : articles.image }}/>
         </View>
 
-      </View>  
+      </View>
+       
+      <Text style={styles.detailTitle}>{articles.prix}.0 €</Text>
+
+      <Button
+        containerStyle={styles.buttonVider}
+        title='Ajouter au panier'
+        onPress={ajouter}
+        />
+
+    </View>  
 
   )
 }

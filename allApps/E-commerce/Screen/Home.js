@@ -5,7 +5,7 @@ import Articles from '../Components/Articles'
 
 const Home = () => {
   return (
-    <View style={ styles.content }>
+    <View style={styles.content}>
         <Categories />
         <Articles />
     </View>
